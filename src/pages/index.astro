@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+const posts = await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true);
+---
+<html lang="ko"><head><meta charset="utf-8" /><title>시장주보</title></head>
+<body><h1>시장주보</h1><ul>{posts.map(p => <li>{p.data.title}</li>)}</ul></body></html>
