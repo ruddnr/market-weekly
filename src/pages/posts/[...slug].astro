@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true);
+  return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
+---
+<BaseLayout title={post.data.title} description={post.data.summary}>
+  <main>
+    <article>
+      <header style="text-align:center; padding: 36px 0 8px">
+        <div class="issue-label">제{post.data.issue}호 · {fmt(post.data.date)}</div>
+        <h1 style="font-size: 27px; margin: 12px 0">{post.data.title}</h1>
+        <p style="color: var(--muted); font-family: var(--font-sans); font-size: 13px">데이터 기준일: {post.data.dataAsOf}</p>
+      </header>
+      <div class="post-body"><Content /></div>
+    </article>
+  </main>
+</BaseLayout>

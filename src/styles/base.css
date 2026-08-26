@@ -1,0 +1,29 @@
+:root {
+  --paper: #faf6ef; --ink: #1f1b16; --ink-soft: #4d463c; --muted: #8a7f6f;
+  --accent: #8b1e2d; --navy: #1a2e4a; --rule: #d8cfc0; --rule-soft: #e7dfd2;
+  --font-serif: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+  --font-sans: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --measure: 42rem;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-serif); line-height: 1.85; font-size: 17px;
+}
+main { max-width: var(--measure); margin: 0 auto; padding: 0 20px 80px; }
+h1, h2, h3 { font-family: var(--font-serif); line-height: 1.4; }
+a { color: inherit; text-decoration-color: var(--rule); }
+a:hover { color: var(--accent); }
+.masthead { text-align: center; padding: 40px 0 20px; border-bottom: 3px double var(--ink); }
+.masthead h1 { font-size: 30px; letter-spacing: 10px; margin: 0; }
+.masthead .subtitle { font-family: var(--font-sans); font-size: 12px; letter-spacing: 3px; color: var(--muted); margin-top: 8px; }
+.site-nav { display: flex; justify-content: center; gap: 22px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; }
+.site-nav a { text-decoration: none; color: var(--ink-soft); }
+.issue-label { font-family: var(--font-sans); font-size: 12px; letter-spacing: 2px; color: var(--accent); font-weight: 600; }
+.post-body h2 { border-top: 1px solid var(--rule); padding-top: 24px; margin-top: 40px; font-size: 22px; }
+.archive-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.archive-item .no { color: var(--accent); font-weight: 600; min-width: 3.2em; }
+.archive-item .date { font-family: var(--font-sans); font-size: 12px; color: var(--muted); margin-left: auto; white-space: nowrap; }
+.site-footer { border-top: 3px double var(--ink); margin-top: 60px; padding: 24px 20px 40px; }
+.site-footer .disclaimer { font-family: var(--font-sans); font-size: 12px; color: var(--muted); max-width: var(--measure); margin: 0 auto; line-height: 1.7; }
+@media (max-width: 480px) { body { font-size: 16px; } .masthead h1 { font-size: 24px; letter-spacing: 6px; } }

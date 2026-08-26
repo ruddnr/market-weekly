@@ -1,0 +1,32 @@
+---
+import { SITE } from '../config';
+import '../styles/base.css';
+interface Props { title?: string; description?: string }
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} — ${SITE.title}` : `${SITE.title} — ${SITE.subtitle}`;
+---
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description ?? SITE.subtitle} />
+  <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="masthead">
+    <h1><a href="/" style="text-decoration:none">{SITE.title}</a></h1>
+    <div class="subtitle">{SITE.subtitle}</div>
+  </header>
+  <nav class="site-nav">
+    <a href="/">홈</a><a href="/search">검색</a><a href="/about">소개</a><a href="/disclaimer">면책</a><a href="/rss.xml">RSS</a>
+  </nav>
+  <slot />
+  <footer class="site-footer">
+    <p class="disclaimer">{SITE.disclaimer}</p>
+  </footer>
+</body>
+</html>

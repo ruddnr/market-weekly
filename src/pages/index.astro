@@ -1,6 +1,31 @@
 ---
 import { getCollection } from 'astro:content';
-const posts = await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true);
+import BaseLayout from '../layouts/BaseLayout.astro';
+const posts = (await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const [latest, ...rest] = posts;
+const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
 ---
-<html lang="ko"><head><meta charset="utf-8" /><title>시장주보</title></head>
-<body><h1>시장주보</h1><ul>{posts.map(p => <li>{p.data.title}</li>)}</ul></body></html>
+<BaseLayout>
+  <main>
+    {latest && (
+      <section style="padding: 36px 0 8px">
+        <div class="issue-label">제{latest.data.issue}호 · {fmt(latest.data.date)}</div>
+        <h2 style="font-size: 26px; margin: 10px 0 12px">
+          <a href={`/posts/${latest.id}/`} style="text-decoration:none">{latest.data.title}</a>
+        </h2>
+        <p style="color: var(--ink-soft)">{latest.data.summary}</p>
+      </section>
+    )}
+    <section>
+      <h3 style="font-family: var(--font-sans); font-size: 13px; letter-spacing: 2px; color: var(--muted)">아카이브</h3>
+      {rest.map(p => (
+        <div class="archive-item">
+          <span class="no">제{p.data.issue}호</span>
+          <a href={`/posts/${p.id}/`} style="text-decoration:none">{p.data.title}</a>
+          <span class="date">{fmt(p.data.date)}</span>
+        </div>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
