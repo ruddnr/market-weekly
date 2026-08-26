@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="검색">
+  <main>
+    <h2 style="margin-top: 36px">검색</h2>
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+    <script src="/pagefind/pagefind-ui.js" is:inline></script>
+    <div id="search"></div>
+    <script is:inline>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (typeof PagefindUI !== 'undefined') {
+          new PagefindUI({ element: '#search', showSubResults: true });
+        } else {
+          document.getElementById('search').textContent =
+            '검색 인덱스가 없습니다. 빌드 후 배포된 사이트에서 동작합니다.';
+        }
+      });
+    </script>
+  </main>
+</BaseLayout>
