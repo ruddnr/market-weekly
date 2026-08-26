@@ -12,9 +12,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.8",
+    "@astrojs/mdx": "^4.3.14",
     "@astrojs/rss": "^4.0.19",
-    "astro": "^7.2.7",
+    "astro": "^5.18.2",
     "chart.js": "^4.5.1"
   },
   "allowScripts": {
