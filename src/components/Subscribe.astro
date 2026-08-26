@@ -1,0 +1,13 @@
+---
+import { SITE } from '../config';
+---
+{SITE.stibeeFormUrl !== '' && (
+  <section style="margin-top: 40px; border: 1px solid var(--rule); padding: 20px; text-align: center">
+    <p style="font-family: var(--font-sans); font-size: 14px; margin: 0 0 12px">
+      매주 발행되는 시장주보를 이메일로 받아보세요.
+    </p>
+    <a href={SITE.stibeeFormUrl} target="_blank" rel="noopener"
+       style="font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--accent)">
+      뉴스레터 구독하기 →</a>
+  </section>
+)}
