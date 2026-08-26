@@ -8,6 +8,9 @@ tags: [샘플]
 draft: true
 ---
 
+import charts from './charts.json';
+import Chart from '../../../components/Chart.astro';
+
 ## Ⅰ. 이번 주 시장의 관심사
 
 더미 문단. 이 글은 화면 확인용이며 발행되지 않는다.
@@ -19,3 +22,5 @@ draft: true
 ## Ⅲ. 딥다이브
 
 더미 문단.
+
+<Chart spec={charts.weeklyDummy} />
