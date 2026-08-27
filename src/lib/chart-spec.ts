@@ -7,6 +7,7 @@ export type ChartSpec = {
   series: { name: string; values: (number | null)[] }[];
 };
 
+// 차트 캔버스는 CSS 변수를 못 읽으므로 색을 여기 직접 하드코딩한다 — src/styles/base.css :root 토큰과 값이 같아야 하니, 토큰 변경 시 이쪽도 함께 갱신할 것
 const PALETTE = ['#8b1e2d', '#1a2e4a', '#b98a2f', '#5a7a63', '#8a7f6f'];
 const FONT = { family: "'Noto Sans KR', sans-serif", size: 12 };
 

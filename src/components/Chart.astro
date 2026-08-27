@@ -5,7 +5,7 @@ const { spec } = Astro.props;
 ---
 <figure class="chart" style="margin: 28px 0">
   <figcaption style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; color: var(--ink-soft); margin-bottom: 8px">{spec.title}</figcaption>
-  <div style="position: relative; height: 300px"><canvas data-chart-spec={JSON.stringify(spec)}></canvas></div>
+  <div style="position: relative; height: 300px"><canvas data-chart-spec={JSON.stringify(spec)} role="img" aria-label={spec.title}></canvas></div>
   <p style="font-family: var(--font-sans); font-size: 11px; color: var(--muted); margin-top: 6px">출처: {spec.source}</p>
 </figure>
 <script>

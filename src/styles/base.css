@@ -1,4 +1,5 @@
 :root {
+  /* 차트 색(팔레트·틱 색)은 src/lib/chart-spec.ts에도 하드코딩돼 있다 — 여기 토큰을 바꾸면 그쪽도 같이 갱신할 것 */
   --paper: #faf6ef; --ink: #1f1b16; --ink-soft: #4d463c; --muted: #8a7f6f;
   --accent: #8b1e2d; --navy: #1a2e4a; --rule: #d8cfc0; --rule-soft: #e7dfd2;
   --font-serif: 'Noto Serif KR', 'Nanum Myeongjo', serif;

@@ -12,5 +12,5 @@ export const SITE = {
     category: 'Announcements', // GitHub 기본 카테고리(Announcement 타입: giscus·관리자만 스레드 생성)
     categoryId: 'DIC_kwDOUEyAws4DEOh_',
   },
-  stibeeFormUrl: '', // Task 7에서 채움
+  stibeeFormUrl: '', // 스티비 가입 후 폼 URL 기입 — 채우면 구독 폼 자동 노출
 };
