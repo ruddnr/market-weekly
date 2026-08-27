@@ -17,6 +17,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
         <p style="color: var(--ink-soft)">{latest.data.summary}</p>
       </section>
     )}
+    {rest.length > 0 && (
     <section>
       <h3 style="font-family: var(--font-sans); font-size: 13px; letter-spacing: 2px; color: var(--muted)">아카이브</h3>
       {rest.map(p => (
@@ -27,5 +28,6 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
         </div>
       ))}
     </section>
+    )}
   </main>
 </BaseLayout>

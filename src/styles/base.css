@@ -9,6 +9,7 @@
 body {
   margin: 0; background: var(--paper); color: var(--ink);
   font-family: var(--font-serif); line-height: 1.85; font-size: 17px;
+  word-break: keep-all;
 }
 main { max-width: var(--measure); margin: 0 auto; padding: 0 20px 80px; }
 h1, h2, h3 { font-family: var(--font-serif); line-height: 1.4; }
