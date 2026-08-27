@@ -22,7 +22,12 @@ title(문자열) · issue(0 이상 정수) · date(YYYY-MM-DD) · dataAsOf(YYYY-
 `{ "<chartId>": { type: "line"|"bar", title, unit?, source, labels: [...],
    series: [{ name, values: [숫자|null,...] }] } }`
 - source는 반드시 "출처, 기준일" 형식. 더미·비공개 소스 금지
-- MDX에서 `import charts from './charts.json'` 후 `<Chart spec={charts.<chartId>} />`
+- MDX에서 `import charts from './charts.json'` 후 `<Chart spec={charts.<chartId>} />`로 렌더링한다.
+  frontmatter를 닫는 `---` 직후에 아래 두 줄을 이 순서로 배치해야 렌더링된다(샘플 `src/content/posts/2026-08-26-sample/index.mdx` 참고):
+  ```
+  import charts from './charts.json';
+  import Chart from '../../../components/Chart.astro';
+  ```
 
 ## 금지 사항 (스펙 §4 소재 규칙)
 사내 데이터 원문·수치, 사내 바스켓 명칭·구성·레벨, 텔레그램 원문 인용,
