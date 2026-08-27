@@ -16,5 +16,6 @@ export async function GET(context: APIContext) {
       description: p.data.summary,
       link: `/posts/${p.id}/`,
     })),
+    customData: '<language>ko</language>',
   });
 }
