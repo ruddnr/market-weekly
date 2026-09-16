@@ -10,7 +10,8 @@ const posts = defineCollection({
   }),
   schema: z.object({
     title: z.string().min(1),
-    issue: z.number().int().nonnegative(),        // 호수 (창간 예고는 0)
+    issue: z.number().int().nonnegative(),        // 호수 (창간 예고는 0). special이면 화면에 표시하지 않고 정렬·참조용으로만 둔다
+    special: z.boolean().default(false),           // 특별판: 정규 호수를 소모하지 않고 라벨을 '특별판'으로 표시 (2026-09-16)
     date: z.coerce.date(),                         // 발행일
     dataAsOf: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), // 데이터 기준일
     summary: z.string().min(1).max(300),

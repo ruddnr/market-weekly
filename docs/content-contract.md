@@ -10,6 +10,9 @@
 ## frontmatter (zod 스키마: src/content.config.ts)
 title(문자열) · issue(0 이상 정수) · date(YYYY-MM-DD) · dataAsOf(YYYY-MM-DD 문자열)
 · summary(300자 이하) · tags(문자열 배열) · draft(불리언, 초안은 true)
+· special(불리언, 기본 false — 2026-09-16 신설): true면 정규 호수를 소모하지 않는 특별판. 화면 라벨이 '제N호' 대신 '특별판'으로
+  표시되고 issue는 정렬·참조용으로만 쓴다(직전 정규 호 번호를 넣는다). 폴더명은 `YYYY-MM-DD-special-<슬러그>`로 두어
+  publish.py의 호수 계산(`-issue-NNN`만 센다)에 잡히지 않게 한다. 특별판은 H2 개수·코너 구성이 자유롭다.
 
 주의: `dataAsOf`는 반드시 따옴표로 감싼다 (`dataAsOf: "2026-08-30"`).
 따옴표가 없으면 YAML이 날짜(Date)로 자동 변환해 문자열 스키마와 충돌, 빌드가 깨진다.

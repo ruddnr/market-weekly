@@ -11,12 +11,14 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
+// 특별판은 정규 호수를 소모하지 않으므로 번호 대신 '특별판'으로 표시한다
+const label = post.data.special ? '특별판' : `제${post.data.issue}호`;
 ---
 <BaseLayout title={post.data.title} description={post.data.summary}>
   <main>
     <article>
       <header style="text-align:center; padding: 36px 0 8px">
-        <div class="issue-label">제{post.data.issue}호 · {fmt(post.data.date)}</div>
+        <div class="issue-label">{label} · {fmt(post.data.date)}</div>
         <h1 style="font-size: 27px; margin: 12px 0">{post.data.title}</h1>
         <p style="color: var(--muted); font-family: var(--font-sans); font-size: 13px">데이터 기준일: {post.data.dataAsOf}</p>
       </header>

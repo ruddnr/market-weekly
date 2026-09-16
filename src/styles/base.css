@@ -29,3 +29,12 @@ a:hover { color: var(--accent); }
 .site-footer { border-top: 3px double var(--ink); margin-top: 60px; padding: 24px 20px 40px; }
 .site-footer .disclaimer { font-family: var(--font-sans); font-size: 12px; color: var(--muted); max-width: var(--measure); margin: 0 auto; line-height: 1.7; }
 @media (max-width: 480px) { body { font-size: 16px; } .masthead h1 { font-size: 24px; letter-spacing: 6px; } }
+
+/* 본문 표·인용문 (2026-09-16 특별판에서 처음 사용 — 정규 호에는 표가 없어 영향 없음) */
+.post-body table { width: 100%; border-collapse: collapse; margin: 22px 0; font-family: var(--font-sans); font-size: 14px; line-height: 1.5; }
+.post-body th, .post-body td { padding: 8px 10px; border-bottom: 1px solid var(--rule-soft); text-align: left; vertical-align: top; }
+.post-body th { border-bottom: 1px solid var(--rule); color: var(--ink-soft); font-weight: 600; }
+.post-body td:not(:first-child), .post-body th:not(:first-child) { text-align: right; white-space: nowrap; }
+.post-body blockquote { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--rule); color: var(--ink-soft); font-size: 15.5px; }
+.post-body blockquote p { margin: 0; }
+@media (max-width: 480px) { .post-body table { font-size: 12.5px; display: block; overflow-x: auto; } .post-body td:not(:first-child), .post-body th:not(:first-child) { white-space: normal; } }

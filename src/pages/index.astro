@@ -5,12 +5,14 @@ const posts = (await getCollection('posts', ({ data }) => import.meta.env.PROD ?
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const [latest, ...rest] = posts;
 const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
+// 특별판은 정규 호수를 소모하지 않으므로 번호 대신 '특별판'으로 표시한다
+const label = (p: typeof posts[number]) => p.data.special ? '특별판' : `제${p.data.issue}호`;
 ---
 <BaseLayout>
   <main>
     {latest && (
       <section style="padding: 36px 0 8px">
-        <div class="issue-label">제{latest.data.issue}호 · {fmt(latest.data.date)}</div>
+        <div class="issue-label">{label(latest)} · {fmt(latest.data.date)}</div>
         <h2 style="font-size: 26px; margin: 10px 0 12px">
           <a href={`/posts/${latest.id}/`} style="text-decoration:none">{latest.data.title}</a>
         </h2>
@@ -22,7 +24,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
       <h3 style="font-family: var(--font-sans); font-size: 13px; letter-spacing: 2px; color: var(--muted)">아카이브</h3>
       {rest.map(p => (
         <div class="archive-item">
-          <span class="no">제{p.data.issue}호</span>
+          <span class="no">{label(p)}</span>
           <a href={`/posts/${p.id}/`} style="text-decoration:none">{p.data.title}</a>
           <span class="date">{fmt(p.data.date)}</span>
         </div>
