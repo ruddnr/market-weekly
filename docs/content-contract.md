@@ -33,6 +33,11 @@ title(문자열) · issue(0 이상 정수) · date(YYYY-MM-DD) · dataAsOf(YYYY-
 `{ "<chartId>": { type: "line"|"bar", title, unit?, source, labels: [...],
    series: [{ name, values: [숫자|null,...] }] } }`
 - source는 반드시 "출처, 기준일" 형식. 더미·비공개 소스 금지
+- **차트는 그 코너 본문이 다루는 대상을 그린다**(2026-09-18 신설): deepdive=Ⅲ, longview=Ⅳ, themes=Ⅱ.
+  파이프라인은 초안 응답 머리의 `CHARTS: deepdive=…; longview=…; theme=…` 선언을 정본으로 삼고,
+  선언이 없으면 본문 종목명 매칭 → 변동 상위 순으로 내려가며 verify 경고를 남긴다. verify는 산출물
+  자체도 검사한다(themes는 테마 폭 차트라 부분 일치 허용). 종목 표기는 names 하나로 통일한다 —
+  본문이 차트 범례와 다른 이름을 쓰면 독자가 둘을 연결하지 못한다(제1~4호 실측).
 - MDX에서 `import charts from './charts.json'` 후 `<Chart spec={charts.<chartId>} />`로 렌더링한다.
   frontmatter를 닫는 `---` 직후에 아래 두 줄을 이 순서로 배치해야 렌더링된다(샘플 `src/content/posts/2026-08-26-sample/index.mdx` 참고):
   ```
