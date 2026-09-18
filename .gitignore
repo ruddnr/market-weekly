@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# preview_draft.py가 잠깐 만드는 미리보기 글 (검토용, 커밋 대상 아님)
+src/content/posts/preview-*
