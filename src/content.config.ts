@@ -20,4 +20,21 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const daily = defineCollection({
+  // 일간 마감판(2026-10-02 신설, 설계서 2026-09-30). 폴더명(YYYY-MM-DD)이 id·주소가 된다.
+  loader: glob({
+    pattern: '**/index.mdx',
+    base: './src/content/daily',
+    generateId: ({ entry }) => entry.replace(/\/index\.mdx$/, ''),
+  }),
+  schema: z.object({
+    title: z.string().min(1),
+    date: z.coerce.date(),
+    dataAsOf: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    summary: z.string().min(1).max(300),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { posts, daily };

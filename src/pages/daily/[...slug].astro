@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Subscribe from '../../components/Subscribe.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('daily', ({ data }) => import.meta.env.PROD ? !data.draft : true);
+  return items.map(item => ({ params: { slug: item.id }, props: { item } }));
+}
+const { item } = Astro.props;
+const { Content } = await render(item);
+const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '. ');
+---
+<BaseLayout title={item.data.title} description={item.data.summary}>
+  <main>
+    <article>
+      <header style="text-align:center; padding: 36px 0 8px">
+        <div class="issue-label">일간 마감 · {fmt(item.data.date)}</div>
+        <h1 style="font-size: 25px; margin: 12px 0">{item.data.title}</h1>
+        <p style="color: var(--muted); font-family: var(--font-sans); font-size: 13px">데이터 기준일: {item.data.dataAsOf}</p>
+      </header>
+      <div class="post-body"><Content /></div>
+      <Subscribe />
+    </article>
+  </main>
+</BaseLayout>
